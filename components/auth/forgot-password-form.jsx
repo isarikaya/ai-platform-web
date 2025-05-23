@@ -28,10 +28,12 @@ import { toast } from "sonner"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { ResetPasswordForm } from "./reset-password-form"
+import { Routes } from "@/lib/routes"
+
 export function ForgotPasswordForm() {
   const searchParams = useSearchParams()
   const token = searchParams.get("token")
-  if(token) {
+  if (token) {
     return <ResetPasswordForm />
   }
   const [isPending, startTransition] = useTransition()
@@ -46,7 +48,7 @@ export function ForgotPasswordForm() {
     startTransition(async () => {
       const { data, error } = await forgetPassword({
         email: values.email,
-        redirectTo: "http://localhost:3000/reset-password",
+        redirectTo: Routes.Pages.Auth.RedirectTo,
       })
       if (data) {
         setIsSuccess(true)

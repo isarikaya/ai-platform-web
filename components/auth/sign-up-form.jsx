@@ -27,6 +27,7 @@ import { sendVerificationEmail, signIn, signUp } from "@/lib/auth-client"
 import Spinner from "@/components/ui/spinner"
 import { toast } from "sonner"
 import Link from "next/link"
+import { Routes } from "@/lib/routes"
 
 export function SignUpForm() {
   const [isPending, startTransition] = useTransition()
@@ -50,7 +51,7 @@ export function SignUpForm() {
       if (data) {
         await sendVerificationEmail({
           email: values.email,
-          callbackURL: "http://localhost:3000/dash",
+          callbackURL: Routes.Pages.Auth.CallBackURL,
         })
         toast.success("Please check your email for verification")
       }
@@ -65,7 +66,7 @@ export function SignUpForm() {
       setIsGooglePending(true)
       await signIn.social({
         provider: "google",
-        callbackURL: "http://localhost:3000/dash",
+        callbackURL: Routes.Pages.Auth.CallBackURL,
       })
     } catch (error) {
       console.error("Google sign in failed:", error)

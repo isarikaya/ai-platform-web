@@ -18,6 +18,12 @@ export const Profile = () => {
   }
   return (
     <div className="flex flex-col items-center justify-center h-screen">
+      <div className="w-full max-w-md p-4 bg-secondary/20 rounded-lg mb-4">
+        <h2 className="text-lg font-semibold mb-2">Session Details</h2>
+        <pre className="whitespace-pre-wrap break-words text-sm bg-background p-3 rounded border">
+          {JSON.stringify(session, null, 2)}
+        </pre>
+      </div>
       <div key={session?.user?.name} className="text-center">
         {session?.user?.image ? (
           <Image

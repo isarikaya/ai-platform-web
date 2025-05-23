@@ -4,7 +4,7 @@ export default function DashboardPage() {
   return (
     <div>
       <h1>Dashboard</h1>
-      <Link href="/dash/settings/profile">Profile</Link>
+      <Link href="/app/settings/profile">Profile</Link>
     </div>
   )
 }

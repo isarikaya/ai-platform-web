@@ -27,6 +27,7 @@ import Spinner from "@/components/ui/spinner"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 import { useSearchParams } from "next/navigation"
+import { Routes } from "@/lib/routes"
 export function ResetPasswordForm() {
   const searchParams = useSearchParams()
   const token = searchParams.get("token")
@@ -50,7 +51,7 @@ export function ResetPasswordForm() {
       })
       if (data) {
         toast.success("Password reset successfully")
-        router.push("/sign-in")
+        router.push(Routes.Pages.SignIn)
       }
       if (error) {
         toast.error(error.message)
